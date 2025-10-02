@@ -1,8 +1,7 @@
 <?php
-
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\SkillOfferd;
 use Illuminate\Database\Seeder;
 
 class SkillOfferdSeeder extends Seeder
@@ -12,6 +11,6 @@ class SkillOfferdSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        SkillOfferd::factory()->count(10)->create();
     }
 }
