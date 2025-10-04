@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             SkillWantedSeeder::class,
             SkillOfferdSeeder::class,
             ReviewSeeder::class,
+            MessagesSeeder::class,
         ]);
     }
 }
