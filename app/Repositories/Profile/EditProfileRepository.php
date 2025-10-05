@@ -1,0 +1,14 @@
+<?php
+namespace App\Repositories\Profile;
+
+use App\Models\User;
+
+class EditProfileRepository
+{
+    public function getProfile($userId)
+    {
+        $data = User::where('id', $userId)->first();
+
+        return $data;
+    }
+}

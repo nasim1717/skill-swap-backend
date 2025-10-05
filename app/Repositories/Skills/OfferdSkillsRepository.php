@@ -12,7 +12,7 @@ class OfferdSkillsRepository
     {
 
         if (Auth::check()) {
-            return SkillOfferd::where('user_id', Auth::user()->id)->get();
+            return SkillOfferd::where('user_id', Auth::user()->id)->first();
         }
         return $this->error('Unauthorized Access', 401);
     }

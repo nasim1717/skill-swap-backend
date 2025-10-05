@@ -3,6 +3,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Skills\StoreSkillOfferd;
+use App\Http\Resources\Skills\SkillOfferdResouce;
 use App\Services\Skills\SkillOfferdService;
 use App\Traits\ApiResponse;
 
@@ -18,14 +19,14 @@ class SkillOfferdController extends Controller
 
     public function index()
     {
-        return $this->success($this->service->listAll());
+        return $this->success(new SkillOfferdResouce($this->service->listAll()), 'Skill Offerd fetched successfully', 200);
     }
 
     public function store(StoreSkillOfferd $request)
     {
         $createDkillOfferd = $this->service->create($request->validated());
 
-        return $this->success($createDkillOfferd, 'Skill Offerd created successfully', 201);
+        return $this->success(new SkillOfferdResouce($createDkillOfferd), 'Skill Offerd created successfully', 201);
 
     }
 
@@ -33,7 +34,7 @@ class SkillOfferdController extends Controller
     {
         $updateSkillOfferd = $this->service->update($id, $request->validated());
 
-        return $this->success($updateSkillOfferd, 'Skill Offerd updated successfully', 200);
+        return $this->success(new SkillOfferdResouce($updateSkillOfferd), 'Skill Offerd updated successfully', 200);
 
     }
 }
