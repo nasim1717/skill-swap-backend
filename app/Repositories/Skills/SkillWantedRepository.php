@@ -1,14 +1,20 @@
 <?php
-
 namespace App\Repositories\Skills;
 
 use App\Models\SkillWanted;
+use App\Traits\ApiResponse;
+use Illuminate\Support\Facades\Auth;
 
 class SkillWantedRepository
 {
+    use ApiResponse;
     public function all()
     {
-        return SkillWanted::latest()->get();
+        if (Auth::check()) {
+            return SkillWanted::where('user_id', Auth::user()->id)->get();
+        }
+
+        return $this->error('Unauthorized Access', 401);
     }
 
     public function find($id)
@@ -21,10 +27,11 @@ class SkillWantedRepository
         return SkillWanted::create($data);
     }
 
-    public function update(SkillWanted $model, array $data)
+    public function update($id, array $data)
     {
-        $model->update($data);
-        return $model;
+
+        return SkillWanted::where('id', $id)->update($data);
+
     }
 
     public function delete(SkillWanted $model)

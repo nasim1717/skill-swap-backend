@@ -29,4 +29,11 @@ class SkillOfferdController extends Controller
 
     }
 
+    public function update(StoreSkillOfferd $request, $id)
+    {
+        $updateSkillOfferd = $this->service->update($id, $request->validated());
+
+        return $this->success($updateSkillOfferd, 'Skill Offerd updated successfully', 200);
+
+    }
 }

@@ -2,16 +2,19 @@
 namespace App\Repositories\Skills;
 
 use App\Models\SkillOfferd;
+use App\Traits\ApiResponse;
 use Illuminate\Support\Facades\Auth;
 
 class OfferdSkillsRepository
 {
+    use ApiResponse;
     public function all()
     {
+
         if (Auth::check()) {
             return SkillOfferd::where('user_id', Auth::user()->id)->get();
         }
-        return response()->json(['message' => 'Unauthorized Access'], 401);
+        return $this->error('Unauthorized Access', 401);
     }
 
     public function find($id)
@@ -24,10 +27,11 @@ class OfferdSkillsRepository
         return SkillOfferd::create($data);
     }
 
-    public function update(SkillOfferd $model, array $data)
+    public function update($id, array $data)
     {
-        $model->update($data);
-        return $model;
+
+        return SkillOfferd::where('id', $id)->update($data);
+
     }
 
     public function delete(SkillOfferd $model)

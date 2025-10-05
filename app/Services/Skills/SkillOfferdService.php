@@ -28,7 +28,7 @@ class SkillOfferdService
 
     public function update($id, $data)
     {
-        // return $this->repository->update($id, $data);
+        return $this->repository->update($id, $data);
     }
 
     public function delete($id)

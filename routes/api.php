@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\api\SkillOfferdController;
+use App\Http\Controllers\api\SkillWantedController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
@@ -18,4 +19,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
 
     Route::get('/offered-skills', [SkillOfferdController::class, 'index']);
+    Route::get('/wantted-skills', [SkillWantedController::class, 'index']);
 });
