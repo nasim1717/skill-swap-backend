@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\EditProfile;
 use App\Http\Controllers\api\SkillOfferdController;
 use App\Http\Controllers\api\SkillWantedController;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/offered-skills', [SkillOfferdController::class, 'index']);
     Route::get('/wantted-skills', [SkillWantedController::class, 'index']);
+
+    Route::get('/edit-profile', [EditProfile::class, 'getProfile']);
+    Route::post('/edit-profile', [EditProfile::class, 'updateProfile']);
 });

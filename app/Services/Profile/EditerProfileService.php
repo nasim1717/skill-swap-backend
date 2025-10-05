@@ -21,4 +21,12 @@ class EditerProfileService
         }
         return $this->error('Unauthorized Access', 401);
     }
+
+    public function updateProfile($data)
+    {
+        if (Auth::check()) {
+            return $this->repository->updateProfile(Auth::user()->id, $data);
+        }
+        return $this->error('Unauthorized Access', 401);
+    }
 }

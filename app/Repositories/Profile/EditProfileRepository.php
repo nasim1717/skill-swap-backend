@@ -11,4 +11,9 @@ class EditProfileRepository
 
         return $data;
     }
+
+    public function updateProfile($userId, $data)
+    {
+        return User::where('id', $userId)->update($data);
+    }
 }
