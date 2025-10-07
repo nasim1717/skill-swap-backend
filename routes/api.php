@@ -19,9 +19,11 @@ Route::prefix('auth')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
 
-    Route::get('/offered-skills', [SkillOfferdController::class, 'index']);
+    Route::get('/offerd-skills', [SkillOfferdController::class, 'index']);
+    Route::post('/offerd-skills', [SkillOfferdController::class, 'store']);
     Route::get('/wantted-skills', [SkillWantedController::class, 'index']);
+    Route::post('/wantted-skills', [SkillWantedController::class, 'store']);
 
-    Route::get('/edit-profile', [EditProfile::class, 'getProfile']);
-    Route::post('/edit-profile', [EditProfile::class, 'updateProfile']);
+    Route::get('/profile', [EditProfile::class, 'getProfile']);
+    Route::put('/profile', [EditProfile::class, 'updateProfile']);
 });

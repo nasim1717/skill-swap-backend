@@ -24,17 +24,11 @@ class SkillOfferdController extends Controller
 
     public function store(StoreSkillOfferd $request)
     {
+        // $request['user_id'] = auth()->id() ?? null;
         $createDkillOfferd = $this->service->create($request->validated());
 
         return $this->success(new SkillOfferdResouce($createDkillOfferd), 'Skill Offerd created successfully', 201);
 
     }
 
-    public function update(StoreSkillOfferd $request, $id)
-    {
-        $updateSkillOfferd = $this->service->update($id, $request->validated());
-
-        return $this->success(new SkillOfferdResouce($updateSkillOfferd), 'Skill Offerd updated successfully', 200);
-
-    }
 }

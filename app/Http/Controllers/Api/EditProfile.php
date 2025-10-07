@@ -23,6 +23,6 @@ class EditProfile extends Controller
 
     public function updateProfile(EditProfileRequest $request)
     {
-        return $this->success(new EditProfileResource($this->service->updateProfile($request->validated())), 'Profile updated successfully', 200);
+        return $this->success($this->service->updateProfile($request->validated()), 'Profile updated successfully', 200);
     }
 }

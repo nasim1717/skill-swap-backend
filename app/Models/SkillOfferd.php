@@ -13,4 +13,13 @@ class SkillOfferd extends Model
         'user_id',
         'skills',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->user_id = auth()->id();
+        });
+    }
 }

@@ -3,7 +3,6 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Skills\StoreSkillWanted;
-use App\Http\Requests\Skills\UpdateeSkillWanted;
 use App\Http\Resources\Skills\SkillWantedResouce;
 use App\Services\Skills\SkillWanteddService;
 use App\Traits\ApiResponse;
@@ -20,7 +19,7 @@ class SkillWantedController extends Controller
     }
     public function index()
     {
-        $this->success(new SkillWantedResouce($this->service->listAll()), 'Skill Wanted fetched successfully', 200);
+        return $this->success(new SkillWantedResouce($this->service->listAll()), 'Skill Wanted fetched successfully', 200);
     }
 
     public function store(StoreSkillWanted $request)
@@ -30,10 +29,4 @@ class SkillWantedController extends Controller
         return $this->success(new SkillWantedResouce($createSkillWanted), 'Skill Wanted created successfully', 201);
     }
 
-    public function update(UpdateeSkillWanted $request, $id)
-    {
-        $updateSkillWanted = $this->service->update($id, $request->validated());
-
-        return $this->success(new SkillWantedResouce($updateSkillWanted), 'Skill Wanted updated successfully', 200);
-    }
 }

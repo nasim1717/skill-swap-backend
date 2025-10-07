@@ -20,6 +20,8 @@ class EditProfileResource extends JsonResource
             'bio'             => $this->bio,
             'create_at'       => $this->create_at,
             'profile_picture' => $this->profile_picture,
+            'rating'          => $this->rating,
+            'rating_count'    => $this->rating_count,
         ];
     }
 }
